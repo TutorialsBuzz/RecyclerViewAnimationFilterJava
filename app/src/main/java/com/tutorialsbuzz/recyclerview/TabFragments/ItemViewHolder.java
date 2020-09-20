@@ -2,14 +2,9 @@ package com.tutorialsbuzz.recyclerview.TabFragments;
 
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.tutorialsbuzz.recyclerview.R;
 
-/**
- * Created by iFocus on 29-10-2015.
- */
 public class ItemViewHolder extends RecyclerView.ViewHolder {
 
     private TextView name_TextView;
@@ -25,7 +20,5 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     public void bind(CountryModel countryModel) {
         name_TextView.setText(countryModel.getName());
         iso_TextView.setText(countryModel.getisoCode());
-
     }
-
 }

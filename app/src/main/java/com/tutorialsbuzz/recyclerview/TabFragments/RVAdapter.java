@@ -3,30 +3,22 @@ package com.tutorialsbuzz.recyclerview.TabFragments;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.tutorialsbuzz.recyclerview.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
     private List<CountryModel> mCountryModel;
-//    private List<CountryModel> mOriginalCountryModel;
 
     public RVAdapter(List<CountryModel> countryModel) {
         mCountryModel = new ArrayList<>(countryModel);
-//        mOriginalCountryModel = new ArrayList<>(countryModel);
-        //  this.mCountryModel = mCountryModel;
-        //   this.mOriginalCountryModel = mCountryModel;
+
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder itemViewHolder, int i) {
-//        final ExampleModel model = mModels.get(position);
-//        holder.bind(model);
         final CountryModel model = mCountryModel.get(i);
         itemViewHolder.bind(model);
     }
@@ -98,7 +90,4 @@ public class RVAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         notifyItemMoved(fromPosition, toPosition);
     }
 
-//    public void flushFilter(List<CountryModel> models) {
-//        animateTo(models);
-//    }
 }

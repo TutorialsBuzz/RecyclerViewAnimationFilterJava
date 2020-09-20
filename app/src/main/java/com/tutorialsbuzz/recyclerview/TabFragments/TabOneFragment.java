@@ -8,15 +8,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.tutorialsbuzz.recyclerview.R;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -45,7 +42,6 @@ public class TabOneFragment extends Fragment implements SearchView.OnQueryTextLi
         return view;
     }
 
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -72,33 +68,29 @@ public class TabOneFragment extends Fragment implements SearchView.OnQueryTextLi
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setOnQueryTextListener(this);
 
-        MenuItemCompat.setOnActionExpandListener(item,
-                new MenuItemCompat.OnActionExpandListener() {
-                    @Override
-                    public boolean onMenuItemActionCollapse(MenuItem item) {
-                        // Do something when collapsed
-                        adapter.animateTo(mCountryModel);
-                        return true; // Return true to collapse action view
-                    }
+        item.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                // Do something when collapsed
+                adapter.animateTo(mCountryModel);
+                return true; // Return true to collapse action view
+            }
 
-                    @Override
-                    public boolean onMenuItemActionExpand(MenuItem item) {
-                        // Do something when expanded
-                        return true; // Return true to expand action view
-                    }
-                });
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                // Do something when expanded
+                return true; // Return true to expand action view
+            }
+        });
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        // adapter.setFilter(mCountryModel, newText);
         final List<CountryModel> filteredModelList = filter(mCountryModel, newText);
         adapter.animateTo(filteredModelList);
         recyclerview.scrollToPosition(0);
-
         return true;
     }
-
 
     @Override
     public boolean onQueryTextSubmit(String query) {
